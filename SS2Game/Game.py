@@ -89,11 +89,9 @@ y=1
 Initialize images for buttons
 '''
 tmp=[]
-tmp.append(0)
-tmp[0]=PhotoImage(file="F://0.gif")
-for i in range(1,9):
+for i in range(0,9):
     tmp.append(0)
-    tmp[i] = PhotoImage(file='F://'+str(i)+'.gif')
+    tmp[i] = PhotoImage(file='easy//'+str(i)+'.gif')
 for i in range(0,9):
     butSS.append(0)
     command = (lambda p1, p2: lambda: SScomm(p1, p2)) (x, y)
