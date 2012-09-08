@@ -18,29 +18,18 @@ def SScomm(x,y):
             M[newx][newy]=M[x][y]
             M[x][y]=0
             ok=1
+            command = (lambda p1, p2: lambda: SScomm(p1, p2)) (x, y)
+            butSS[5*(x-1)+y-1]=Button(root, image=tmp[M[x][y]], text=str(M[x][y]), command=command)
+            butSS[5*(x-1)+y-1].image=tmp
+            butSS[5*(x-1)+y-1].grid(row=x-1,column=y-1,sticky=N+S+E+W)
+            command = (lambda p1, p2: lambda: SScomm(p1, p2)) (newx, newy)
+            butSS[5*(newx-1)+newy-1]=Button(root, image=tmp[M[newx][newy]], text=str(M[x][y]), command=command)
+            butSS[5*(newx-1)+newy-1].image=tmp
+            butSS[5*(newx-1)+newy-1].grid(row=newx-1,column=newy-1,sticky=N+S+E+W)
             break
     if(M==done):
         root.quit()
     
-    def play():
-        x=1
-        y=1
-        for i in range(0,25):
-            command = (lambda p1, p2: lambda: SScomm(p1, p2)) (x, y)
-            butSS[i]=Button(root, image=tmp[M[x][y]], text=str(M[x][y]), command=command)
-            butSS[i].image=tmp
-            '''
-            Place the buttons in the Grid
-            '''
-            butSS[i].grid(row=x-1,column=y-1,sticky=N+S+E+W)
-            y=y+1
-            if(y==6):
-                y=1
-                x=x+1
-    if(ok==1):
-        play()
-
-
 
 '''
 Shuffle the numbers
